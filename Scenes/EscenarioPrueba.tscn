@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://0ppsmmy7cap5"]
+
+[ext_resource type="PackedScene" uid="uid://cfi3rub855ro6" path="res://Scenes/Player.tscn" id="1_lv4vk"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+cell_size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("1_lv4vk")]
