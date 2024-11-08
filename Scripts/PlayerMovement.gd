@@ -5,6 +5,9 @@ var target_velocity = Vector3.ZERO
 var baseSpeed: float = 10
 @onready var soundPlayer = $AudioStreamPlayer3D
 
+var inExitRange : bool = false
+var exitBoat
+
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 
@@ -13,6 +16,9 @@ func _process(delta):
 	if Input.is_action_pressed ("Attack"):
 		PerformAttack()
 		print("jaj estoy atacando")
+	if Input.is_action_pressed("Use"):
+		if exitBoat != null:
+			exitBoat.exit(self)
 	pass
 	
 func _input(event: InputEvent):
