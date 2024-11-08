@@ -5,9 +5,6 @@ extends Node3D
 var peer = ENetMultiplayerPeer.new()
 @export var playerScene: PackedScene
 
-#on host pressed
-#
-
 func _add_player(id=1) :#for the host to play
 	var player =playerScene.instantiate()
 	player.name = str(id)
@@ -17,6 +14,8 @@ func _add_player(id=1) :#for the host to play
 
 
 func _on_join_pressed():
+	peer.create_client("localhost", 135)
+	multiplayer.multiplayer_peer = peer
 	pass # Replace with function body.
 
 
