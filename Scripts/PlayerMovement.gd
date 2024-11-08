@@ -7,6 +7,8 @@ var baseSpeed: float = 10
 
 var inExitRange : bool = false
 var exitBoat
+var period = 30
+var timeSince = 0
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
@@ -59,6 +61,19 @@ func PerformAttack():
 	#demas cosas de ataque
 	
 	pass
+
+func addTension(n):
+	tension += n
+	timeSince = 0
 	
 func GetTension():
 	return 1.0+(tension*0.2)
+
+func timer(delta):
+	timeSince+=delta
+	if timeSince>=period:
+		timeSince=0
+		if tension >0: tension-=1
+
+func _on_area_3d_body_entered(body):
+	pass # Replace with function body.

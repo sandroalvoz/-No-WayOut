@@ -8,15 +8,16 @@ var peer = ENetMultiplayerPeer.new()
 func _ready():
 	peer.create_server(port)
 	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_add_player)
-	_add_player()
+	#multiplayer.peer_connected.connect(_add_player)
+	#_add_player()
 	pass
 
-func _add_player(id=1) :#for the host to play
-	var player =playerScene.instantiate()
-	player.name = str(id)
-	call_deferred("add_child", player)
-	pass
+#func _add_player(id=1) :#for the host to play
+	#var player =playerScene.instantiate()
+	#$Escenario.add_child(player)
+	#player.name = str(id)
+	#call_deferred("add_child", player)
+	#pass
 
 
 
