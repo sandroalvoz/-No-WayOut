@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var tension :float = 0
 var target_velocity = Vector3.ZERO
-@export var baseSpeed: float
+var baseSpeed: float = 10
 @onready var soundPlayer = $AudioStreamPlayer3D
 
 func _enter_tree():
@@ -43,9 +43,10 @@ func _physics_process(delta):
 	#Vertical velocity
 	#if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
 		#target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-	#if is_multiplayer_authority():
-		 #velocity = target_velocity
-	velocity = target_velocity
+	print(baseSpeed)
+	if is_multiplayer_authority():
+		velocity = target_velocity
+	#velocity = target_velocity
 	move_and_slide()
 	pass
 
