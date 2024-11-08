@@ -39,7 +39,7 @@ func generate_terrain():
 		for x in range(xSize + 1):
 			# Generar altura basada en el ruido
 			var y = n.get_noise_2d(x * 0.5, z * 0.5) * max_height
-			
+			if z==0 or z==zSize or x==0 or x==xSize: y = 0
 			# Calcular distancia del punto al centro, normalizada entre 0 y 1
 			var dist_to_center = (Vector2(x, z) - center).length() / (xSize / 2)
 			dist_to_center = clamp(dist_to_center, 0, 1) # Limitar a valores entre 0 y 1
@@ -58,7 +58,7 @@ func generate_terrain():
 
 			# Añadir vértice
 			surftool.add_vertex(Vector3(x, y, z))
-			draw_sphere(Vector3(x, y, z))
+			#draw_sphere(Vector3(x, y, z))
 
 	var vert = 0
 	for z in range(zSize):
