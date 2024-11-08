@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d00wnim72wdaa"]
+
+[ext_resource type="Script" path="res://Scripts/Boat.gd" id="1_votvr"]
+[ext_resource type="PackedScene" uid="uid://cfi3rub855ro6" path="res://Scenes/Player.tscn" id="2_dqoni"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rndhn"]
+size = Vector3(2.02124, 0.303955, 3.03654)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c8g7o"]
+
+[node name="Boat" type="CharacterBody3D"]
+script = ExtResource("1_votvr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00322962, 0.00621808, 0.905388)
+shape = SubResource("BoxShape3D_rndhn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.98921, 0, 0, 0, 0.292149, 0, 0, 0, 4.78809, 0, 0, 0)
+mesh = SubResource("BoxMesh_c8g7o")
+
+[node name="Player" parent="." instance=ExtResource("2_dqoni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23168, 0)
