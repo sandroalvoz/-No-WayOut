@@ -1,5 +1,5 @@
 @tool
-extends MeshInstance3D
+extends CollisionShape3D
 
 @export var xSize = 20
 @export var zSize = 20
@@ -10,6 +10,8 @@ extends MeshInstance3D
 
 @export var update = false
 @export var clear_vert_vis = false
+
+var collision_body: StaticBody3D
 
 func _ready():
 	generate_terrain()
@@ -39,7 +41,7 @@ func generate_terrain():
 		for x in range(xSize + 1):
 			# Generar altura basada en el ruido
 			var y = n.get_noise_2d(x * 0.5, z * 0.5) * max_height
-			if z==0 or z==zSize or x==0 or x==xSize: y = 0
+			
 			# Calcular distancia del punto al centro, normalizada entre 0 y 1
 			var dist_to_center = (Vector2(x, z) - center).length() / (xSize / 2)
 			dist_to_center = clamp(dist_to_center, 0, 1) # Limitar a valores entre 0 y 1
@@ -58,7 +60,7 @@ func generate_terrain():
 
 			# Añadir vértice
 			surftool.add_vertex(Vector3(x, y, z))
-			#draw_sphere(Vector3(x, y, z))
+			draw_sphere(Vector3(x, y, z))
 
 	var vert = 0
 	for z in range(zSize):
@@ -76,6 +78,19 @@ func generate_terrain():
 	a_mesh = surftool.commit()
 	mesh = a_mesh
 
+	# Crear colisión con StaticBody3D y CollisionShape3D
+	if collision_body:
+		collision_body.queue_free()
+	
+	collision_body = StaticBody3D.new()
+	add_child(collision_body)
+
+	var collision_shape = CollisionShape3D.new()
+	var concave_shape = ConcavePolygonShape3D.new()
+	concave_shape.set_faces(a_mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX])
+	collision_shape.shape = concave_shape
+	collision_body.add_child(collision_shape)
+	
 func draw_sphere(pos: Vector3):
 	var ins = MeshInstance3D.new()
 	add_child(ins)

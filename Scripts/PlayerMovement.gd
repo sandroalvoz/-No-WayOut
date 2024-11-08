@@ -31,22 +31,19 @@ func _physics_process(delta):
 		direction.x -=1
 	if Input.is_action_pressed("MoveRight"): 
 		direction.x+=1
-	print(direction)
 	if(direction!= Vector3.ZERO):
 		direction = direction.normalized()
 		self.basis = Basis.looking_at(direction)
 		#$Pivot.basis = Basis.looking_at(direction)
-	print(direction)
 	target_velocity.x = direction.x * baseSpeed *GetTension()
 	target_velocity.z = direction.z * baseSpeed *GetTension()
 	
 	#Vertical velocity
 	#if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
 		#target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-	print(baseSpeed)
-	if is_multiplayer_authority():
-		velocity = target_velocity
-	#velocity = target_velocity
+	#if is_multiplayer_authority():
+		#velocity = target_velocity
+	velocity = target_velocity
 	move_and_slide()
 	pass
 
