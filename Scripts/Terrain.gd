@@ -1,7 +1,7 @@
 @tool
 extends MeshInstance3D
 
-@onready var collisionShape = $"../CollisionShape3D"
+@onready var collisionShape:CollisionShape3D = $StaticBody3D/CollisionShape3D
 
 @export var xSize = 20
 @export var zSize = 20
@@ -77,15 +77,8 @@ func generate_terrain():
 	surftool.generate_normals()
 	a_mesh = surftool.commit()
 	mesh = a_mesh
-	if collisionShape.shape is ConcavePolygonShape3D:
-		var concave_shape = collisionShape.shape as ConcavePolygonShape3D
-		var vertices = concave_shape.get_faces()
-		# Los vértices están organizados en tripletas para cada triángulo
-		for i in range(0, vertices.size(), 3):
-			var v1 = vertices[i]
-			var v2 = vertices[i + 1]
-			var v3 = vertices[i + 2]
-			print("Triángulo de colisión:", v1, v2, v3)
+	var colliderShape= mesh.create_trimesh_shape()
+	collisionShape.shape = colliderShape
 
 func draw_sphere(pos: Vector3):
 	var ins = MeshInstance3D.new()
