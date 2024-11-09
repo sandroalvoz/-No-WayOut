@@ -25,9 +25,7 @@ func _on_host_server_pressed():
 	get_tree().change_scene_to_file(serverScene)
 	pass # Replace with function body.
 
-
 func _on_spectator_toggle_toggled(toggled_on):
-	
 	spectatorMode = toggled_on
 	print(spectatorMode)
 	pass # Replace with function body.
