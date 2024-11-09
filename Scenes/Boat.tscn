@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d00wnim72wdaa"]
+[gd_scene load_steps=7 format=3 uid="uid://d00wnim72wdaa"]
 
 [ext_resource type="Script" path="res://Scripts/Boat.gd" id="1_votvr"]
-[ext_resource type="PackedScene" uid="uid://cfi3rub855ro6" path="res://Scenes/Player.tscn" id="2_dqoni"]
+[ext_resource type="PackedScene" uid="uid://b1vvegf4lme0q" path="res://Scenes/PlayerCharacter.tscn" id="3_2kvyq"]
+[ext_resource type="PackedScene" uid="uid://corrxb4minuu2" path="res://Models/Barca.glb" id="3_uingx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rndhn"]
 size = Vector3(2.02124, 0.303955, 3.03654)
@@ -20,17 +21,20 @@ shape = SubResource("BoxShape3D_rndhn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.98921, 0, 0, 0, 0.292149, 0, 0, 0, 4.78809, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_c8g7o")
-
-[node name="Player" parent="." instance=ExtResource("2_dqoni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23168, 0)
-collision_layer = 3
 
 [node name="InteractableArea" type="Area3D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
 shape = SubResource("SphereShape3D_u0p67")
+
+[node name="Barca" parent="." instance=ExtResource("3_uingx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.710204, 0, -0.3694, 0)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_2kvyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43607, 0)
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="InteractableArea" to="." method="_on_area_3d_body_exited"]

@@ -13,6 +13,7 @@ var canMove:bool = true
 #var multiplayerMode:bool = true
 var fall_acceleration = 2
 
+@onready var animationPlayer = $Node3D/JugadorModelo/AnimationPlayer
 @onready var soundPlayer = $AudioStreamPlayer3D
 
 func _enter_tree():
@@ -26,6 +27,9 @@ func _process(delta):
 	if Input.is_action_pressed("Use"):
 		if exitBoat != null:
 			exitBoat.exit(self)
+	if Input.is_action_pressed("Dodge"):
+		canMove= false
+		setStateDodge()
 	pass
 	
 func _input(event: InputEvent):
@@ -46,6 +50,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("MoveRight"): 
 			direction.x+=1
 		if(direction!= Vector3.ZERO):
+			setStateWalk()
 			direction = direction.normalized()
 			self.basis = Basis.looking_at(direction)
 		#$Pivot.basis = Basis.looking_at(direction)
@@ -66,7 +71,9 @@ func _physics_process(delta):
 
 func PerformAttack():
 	#soundPlayer.stream = load()
-	soundPlayer.play()
+	canMove = false
+	setStateAttack()
+	#soundPlayer.play()
 	#demas cosas de ataque
 	
 	pass
@@ -84,5 +91,21 @@ func timer(delta):
 		timeSince=0
 		if tension >0: tension-=1
 
-func _on_area_3d_body_entered(body):
+func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	pass # Replace with function body.
+	
+func setStateIdle():
+	canMove = true
+	animationPlayer.play("Idle",0.05)
+
+func setStateAttack():
+	animationPlayer.play("Attack",0.05)
+
+func setStateDodge():
+	animationPlayer.play("Dodge",0.05)
+
+func setStateWalk():
+	animationPlayer.play("Walk",0.05)
+	
+func setStateDeath():
+	animationPlayer.play("Idle",0.05)

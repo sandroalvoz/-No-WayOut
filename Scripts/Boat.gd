@@ -10,7 +10,7 @@ var center
 var playersOnArea = 0
 var username: String = "Default"
 @onready var interactableArea = $InteractableArea
-@onready var player = $Player
+@onready var player = $PlayerCharacter
 
 
 #referencia al jugador
