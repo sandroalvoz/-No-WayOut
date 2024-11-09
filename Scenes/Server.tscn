@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2m5jmhmalwyq"]
 
-[ext_resource type="Script" path="res://Scripts/MultiplayerTest.gd" id="1_y8aru"]
+[ext_resource type="Script" path="res://Scripts/Server.gd" id="1_y8aru"]
 [ext_resource type="PackedScene" uid="uid://d00wnim72wdaa" path="res://Scenes/Boat.tscn" id="2_nqjb7"]
 [ext_resource type="PackedScene" uid="uid://0ppsmmy7cap5" path="res://Scenes/EscenarioPrueba.tscn" id="3_dwsg0"]
 

@@ -5,18 +5,26 @@ extends Node3D
 var port = 3789
 var peer = ENetMultiplayerPeer.new()
 @export var playerScene: PackedScene
+var spectatorMode: bool = false
+var lastUsername:String = "Host"
 func _ready():
+	spectatorMode = GlobalData.spectatorMode
+	print(spectatorMode)
 	peer.create_server(port)
 	multiplayer.multiplayer_peer = peer
-	#multiplayer.peer_connected.connect(_add_player)
-	#_add_player()
+	var playerName = multiplayer.peer_connected.get_name()
+	multiplayer.peer_connected.connect(_add_player)
+	if !spectatorMode:
+		_add_player( )
 	pass
 
-func _add_player(id=1) :#for the host to play
+func _add_player (id=1) :
 	var player =playerScene.instantiate()
 	$Escenario.add_child(player)
-	player.name = str(id)
-	call_deferred("add_child", player)
+	#call_deferred("add_child", player)
+	player.username = lastUsername
+	player.player.name = str(id)
+	
 	pass
 
 

@@ -14,6 +14,10 @@ config/name="(No)WayOut"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalData="*res://Scripts/global_data.gd"
+
 [filesystem]
 
 import/blender/enabled=false

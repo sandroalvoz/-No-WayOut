@@ -18,6 +18,10 @@ script = ExtResource("1_47koa")
 mesh = SubResource("CapsuleMesh_1cbwd")
 skeleton = NodePath("")
 
+[node name="UsernameDisplay" type="Label3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25898, 0)
+text = "NOMBRE"
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

@@ -8,6 +8,7 @@ var boatState = boatStates.arriving
 enum boatStates{arriving, onLand, leaving}
 var center
 var playersOnArea = 0
+var username: String = "Default"
 @onready var interactableArea = $InteractableArea
 @onready var player = $Player
 
@@ -15,6 +16,7 @@ var playersOnArea = 0
 #referencia al jugador
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.username = username
 	islandMesh = island.mesh
 	center = Vector3(island.position.x, position.y, island.position.z)+ Vector3(island.xSize / 2, 0,  island.zSize / 2)
 	self.position = getSpawnPosition(center)
@@ -49,8 +51,10 @@ func move(delta):
 			#mandar señal para abandonar la partida
 	pass
 func on_arrival():
+	print (is_multiplayer_authority())
 	player.reparent(self.get_parent())
 	interactableArea.set_process(true)
+	player.motionActivated = true
 	pass
 	
 func on_hit():
