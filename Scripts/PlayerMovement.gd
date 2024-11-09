@@ -10,7 +10,7 @@ var period = 30
 var timeSince = 0
 var motionActivated:bool = false
 var canMove:bool = true
-var multiplayerMode:bool = true
+#var multiplayerMode:bool = true
 var fall_acceleration = 2
 
 @onready var soundPlayer = $AudioStreamPlayer3D
@@ -53,15 +53,14 @@ func _physics_process(delta):
 		target_velocity.z = direction.z * baseSpeed *GetTension()
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-	if multiplayerMode:
+	#if multiplayerMode:
 		#print(is_multiplayer_authority())
-		if is_multiplayer_authority():
-			velocity = target_velocity
+		#if is_multiplayer_authority():
+			#velocity = target_velocity
 	#if multiplayerMode and is_multiplayer_authority():
 		#print("Tengo control del jugador")
 		#velocity = target_velocity
-	if !multiplayerMode: 
-		velocity = target_velocity
+	velocity = target_velocity
 	move_and_slide()
 	pass
 

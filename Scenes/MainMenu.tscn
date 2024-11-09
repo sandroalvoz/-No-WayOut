@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://brpvlxjsfq5vh"]
+[gd_scene load_steps=2 format=3 uid="uid://b3l0glop5p2sc"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_5pbp5"]
 
@@ -28,59 +28,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label2" type="Label" parent="UI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "JUGAR"
-
 [node name="Button" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
-text = "Partida local"
-
-[node name="HSeparator3" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "IP del servidor: "
-
-[node name="ServerIp" type="TextEdit" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="JoinServer" type="Button" parent="UI/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-size_flags_vertical = 6
-text = "Unirse a partida en línea"
-
-[node name="HSeparator2" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer6"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Modo espectador:"
-
-[node name="SpectatorToggle" type="CheckBox" parent="UI/MarginContainer/VBoxContainer/HBoxContainer6"]
-layout_mode = 2
-size_flags_horizontal = 6
-
-[node name="HostServer" type="Button" parent="UI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Hostear servidor"
-
-[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
-layout_mode = 2
+text = "JUGAR"
 
 [node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -132,7 +83,4 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 
-[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/JoinServer" to="." method="_on_join_server_pressed"]
-[connection signal="toggled" from="UI/MarginContainer/VBoxContainer/HBoxContainer6/SpectatorToggle" to="." method="_on_spectator_toggle_toggled"]
-[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HostServer" to="." method="_on_host_server_pressed"]
-[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HostServer" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

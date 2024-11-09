@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://brqpurgm0xxo0"]
 
-[ext_resource type="Script" path="res://Scripts/Client.gd" id="1_i6uyh"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/Client.gd" id="1_i6uyh"]
 [ext_resource type="Shader" uid="uid://jx7kdwj2rcri" path="res://Shaders/Water.tres" id="1_v2sob"]
-[ext_resource type="Script" path="res://Scripts/ClientIsland.gd" id="2_ie8ld"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/ClientIsland.gd" id="2_ie8ld"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l8adg"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

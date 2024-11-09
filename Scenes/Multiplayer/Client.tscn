@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbgke1tra1lbd"]
+
+[ext_resource type="PackedScene" uid="uid://brqpurgm0xxo0" path="res://Scenes/Multiplayer/ClientScenery.tscn" id="1_edb3d"]
+
+[node name="Client" type="Node3D"]
+
+[node name="ClientScenery" parent="." instance=ExtResource("1_edb3d")]

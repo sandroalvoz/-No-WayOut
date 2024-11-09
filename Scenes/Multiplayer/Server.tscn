@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2m5jmhmalwyq"]
+
+[ext_resource type="Script" path="res://Scripts/Multiplayer/Server.gd" id="1_56m3l"]
+[ext_resource type="PackedScene" uid="uid://d00wnim72wdaa" path="res://Scenes/Boat.tscn" id="2_5q0mh"]
+[ext_resource type="PackedScene" uid="uid://0ppsmmy7cap5" path="res://Scenes/EscenarioPrueba.tscn" id="3_d7dhh"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/ServerIsland.gd" id="4_4ft6h"]
+
+[node name="Server" type="Node3D"]
+script = ExtResource("1_56m3l")
+playerScene = ExtResource("2_5q0mh")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/EscenarioPrueba.tscn", "res://Scenes/Boat.tscn")
+spawn_path = NodePath("../Network")
+
+[node name="Escenario" parent="." instance=ExtResource("3_d7dhh")]
+script = ExtResource("4_4ft6h")
+
+[node name="Network" type="Node" parent="."]
