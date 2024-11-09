@@ -12,12 +12,12 @@ func _ready():
 	#_add_player()
 	pass
 
-#func _add_player(id=1) :#for the host to play
-	#var player =playerScene.instantiate()
-	#$Escenario.add_child(player)
-	#player.name = str(id)
-	#call_deferred("add_child", player)
-	#pass
+func _add_player(id=1) :#for the host to play
+	var player =playerScene.instantiate()
+	$Escenario.add_child(player)
+	player.name = str(id)
+	call_deferred("add_child", player)
+	pass
 
 
 

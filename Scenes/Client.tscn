@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://brpvlxjsfq5vh"]
+[gd_scene load_steps=2 format=3 uid="uid://brpvlxjsfq5vh"]
+
+[ext_resource type="Script" path="res://Scripts/Client.gd" id="1_rwymc"]
 
 [node name="Client" type="Node3D"]
+script = ExtResource("1_rwymc")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -109,3 +112,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
+
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
