@@ -10,8 +10,8 @@ script = ExtResource("1_y8aru")
 playerScene = ExtResource("2_nqjb7")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Boat.tscn")
-spawn_path = NodePath("../Escenario")
+_spawnable_scenes = PackedStringArray("res://Scenes/EscenarioPrueba.tscn")
+spawn_path = NodePath("..")
 
 [node name="Escenario" parent="." instance=ExtResource("3_dwsg0")]
 script = ExtResource("4_bgi5q")

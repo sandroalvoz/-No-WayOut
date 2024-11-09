@@ -7,4 +7,5 @@ func _ready():
 	get_node("..").connect("player_connected", signalRelay)
 
 func signalRelay():
-	emit_signal("player_connected")
+	print("relaying signal")
+	#emit_signal("player_connected")

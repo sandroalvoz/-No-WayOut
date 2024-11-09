@@ -9,20 +9,20 @@ var seed
 var max_height = 8.0 # Altura máxima de la isla
 var falloff_strength = 2.0 # Controla la pendiente hacia los bordes
 var frequency = 0.2 # Frecuencia del ruido
-
+func _ready():
+	print("estoy vivo jaj")
+	
 @rpc
 func sync_terrain_params(seed_value, freq_value, fallof, x, z, height):
 	#rpc("sync_terrain_params", seed, frequency, falloff_strength, xSize, zSize, max_height)  # Sincroniza el `seed` y otros parámetros
 	# Asigna los parámetros recibidos del servidor
+	print("got rpc")
 	seed = seed_value
 	frequency = freq_value
 	falloff_strength = fallof
 	xSize = x
 	zSize = z
 	max_height = height
-	generate_terrain()
-
-func _ready():
 	generate_terrain()
 
 func generate_terrain():

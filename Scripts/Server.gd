@@ -27,7 +27,8 @@ func _add_player (id=1) :
 	#call_deferred("add_child", player)
 	player.username = lastUsername
 	player.player.name = str(id)
-	emit_signal("player_connected")
+	print("player connected")
+	#emit_signal("player_connected")
 	
 	pass
 

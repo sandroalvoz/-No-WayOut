@@ -13,6 +13,7 @@ func _on_join_server_pressed():
 	if serverAddress =="":
 		serverAddress = defaultAddress
 	GlobalData.serverAddress = serverAddress
+	#get_tree().change_scene_to_file("res://Scenes/Client.tscn")
 	get_tree().change_scene_to_file("res://Scenes/EscenarioPrueba.tscn")
 	pass # Replace with function body.
 
