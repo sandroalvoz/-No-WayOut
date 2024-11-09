@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dee73603d00gb"
-path="res://.godot/imported/JugadorModelo.glb-cf93ba0ef45309fed0ba736280a7bb22.scn"
+uid="uid://corrxb4minuu2"
+path="res://.godot/imported/Barca.glb-f89d2088b785f10c9b2990022a176032.scn"
 
 [deps]
 
-source_file="res://Models/JugadorModelo.glb"
-dest_files=["res://.godot/imported/JugadorModelo.glb-cf93ba0ef45309fed0ba736280a7bb22.scn"]
+source_file="res://Models/Barca.glb"
+dest_files=["res://.godot/imported/Barca.glb-f89d2088b785f10c9b2990022a176032.scn"]
 
 [params]
 
