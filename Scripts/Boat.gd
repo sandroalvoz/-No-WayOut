@@ -18,7 +18,8 @@ var username: String = "Default"
 func _ready():
 	player.username = username
 	islandMesh = island.mesh
-	center = Vector3(island.position.x, position.y, island.position.z)+ Vector3(island.xSize / 2, 0,  island.zSize / 2)
+	center = Vector3.ZERO
+	#center = Vector3(island.position.x, position.y, island.position.z)+ Vector3(island.xSize / 2, 0,  island.zSize / 2)
 	self.position = getSpawnPosition(center)
 	var direction_to_center = (center - position).normalized()
 	self.global_transform.basis = Basis.looking_at(Vector3(direction_to_center.x, position.y, direction_to_center.z))

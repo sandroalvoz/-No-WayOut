@@ -1,13 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfi3rub855ro6"]
+[gd_scene load_steps=4 format=3 uid="uid://cfi3rub855ro6"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_47koa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1cbwd"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_686k1"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o35nk"]
 
@@ -19,9 +14,6 @@ mesh = SubResource("CapsuleMesh_1cbwd")
 skeleton = NodePath("")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_686k1")
 
 [node name="Area3D" type="Area3D" parent="."]
 

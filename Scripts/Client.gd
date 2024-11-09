@@ -7,4 +7,3 @@ func _ready():
 	var client = peer.create_client(GlobalData.serverAddress, port)
 	multiplayer.multiplayer_peer = peer
 	pass # Replace with function body.
-
