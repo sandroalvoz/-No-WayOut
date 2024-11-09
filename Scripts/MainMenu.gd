@@ -1,11 +1,10 @@
 extends Node
 
 const defaultAddress = "localhost"
-const port = 3789
 @onready var serverIp = $UI/MarginContainer/VBoxContainer/HBoxContainer2/ServerIp
 @onready var serverScene = "res://Scenes/Server.tscn"
 var spectatorMode: bool = false
-var peer = ENetMultiplayerPeer.new()
+
 func _ready():
 	pass
 
@@ -14,9 +13,7 @@ func _on_join_server_pressed():
 	if serverAddress =="":
 		serverAddress = defaultAddress
 	GlobalData.serverAddress = serverAddress
-	var client = peer.create_client("localhost", port)
-	#client.username = username.text
-	multiplayer.multiplayer_peer = peer
+	get_tree().change_scene_to_file("res://Scenes/EscenarioPrueba.tscn")
 	pass # Replace with function body.
 
 

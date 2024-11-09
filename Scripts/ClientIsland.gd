@@ -1,41 +1,38 @@
-@tool
 extends MeshInstance3D
 
 @onready var collisionShape:CollisionShape3D = $StaticBody3D/CollisionShape3D
 
-@export var xSize = 20
-@export var zSize = 20
-
-@export var max_height = 8.0 # Altura máxima de la isla
-@export var falloff_strength = 2.0 # Controla la pendiente hacia los bordes
-@export var frequency = 0.2 # Frecuencia del ruido
-
-@export var update = false
-@export var clear_vert_vis = false
+var xSize = 20
+var zSize = 20
 
 var seed
+var max_height = 8.0 # Altura máxima de la isla
+var falloff_strength = 2.0 # Controla la pendiente hacia los bordes
+var frequency = 0.2 # Frecuencia del ruido
+
+@rpc
+func sync_terrain_params(seed_value, freq_value, fallof, x, z, height):
+	#rpc("sync_terrain_params", seed, frequency, falloff_strength, xSize, zSize, max_height)  # Sincroniza el `seed` y otros parámetros
+	# Asigna los parámetros recibidos del servidor
+	seed = seed_value
+	frequency = freq_value
+	falloff_strength = fallof
+	xSize = x
+	zSize = z
+	max_height = height
+	generate_terrain()
 
 func _ready():
-	get_node("..").connect("player_connected", sendData)
 	generate_terrain()
-func sendData():
-	rpc("sync_terrain_params", seed, frequency, falloff_strength, xSize, zSize, max_height)  # Sincroniza el `seed` y otros parámetros
 
 func generate_terrain():
-	# Limpia el terreno previo si es necesario
-	if clear_vert_vis:
-		for child in get_children():
-			child.queue_free()
-		clear_vert_vis = false
 
 	var a_mesh: ArrayMesh
 	var surftool = SurfaceTool.new()
 	var n = FastNoiseLite.new()
 	
 	# Cambia la semilla para generar terreno distinto cada vez
-	n.seed = randi() 
-	seed = n.seed
-	
+	n.seed = seed 
 	n.noise_type = FastNoiseLite.TYPE_PERLIN
 	n.frequency = frequency
 	
@@ -95,9 +92,3 @@ func draw_sphere(pos: Vector3):
 	sphere.radius = 0.1
 	sphere.height = 0.2
 	ins.mesh = sphere
-
-func _process(delta):
-	if update:
-		generate_terrain()
-		update = false
-	pass

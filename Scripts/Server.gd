@@ -7,6 +7,9 @@ var peer = ENetMultiplayerPeer.new()
 @export var playerScene: PackedScene
 var spectatorMode: bool = false
 var lastUsername:String = "Host"
+
+signal player_connected()
+
 func _ready():
 	spectatorMode = GlobalData.spectatorMode
 	print(spectatorMode)
@@ -24,6 +27,7 @@ func _add_player (id=1) :
 	#call_deferred("add_child", player)
 	player.username = lastUsername
 	player.player.name = str(id)
+	emit_signal("player_connected")
 	
 	pass
 

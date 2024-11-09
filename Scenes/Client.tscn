@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx7l72ngso1wl"]
+
+[ext_resource type="Script" path="res://Scripts/Client.gd" id="1_6egie"]
+[ext_resource type="PackedScene" uid="uid://0ppsmmy7cap5" path="res://Scenes/EscenarioPrueba.tscn" id="2_qibp7"]
+
+[node name="Client" type="Node3D"]
+script = ExtResource("1_6egie")
+
+[node name="Escenario" parent="." instance=ExtResource("2_qibp7")]

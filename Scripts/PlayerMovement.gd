@@ -14,13 +14,10 @@ var multiplayerMode:bool = true
 var fall_acceleration = 2
 
 @onready var soundPlayer = $AudioStreamPlayer3D
-@onready var usernameDisplay = $MeshInstance3D/UsernameDisplay
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 
-func _ready():
-	usernameDisplay.text = username
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

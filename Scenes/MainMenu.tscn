@@ -134,5 +134,5 @@ step = 0.05
 
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/JoinServer" to="." method="_on_join_server_pressed"]
 [connection signal="toggled" from="UI/MarginContainer/VBoxContainer/HBoxContainer6/SpectatorToggle" to="." method="_on_spectator_toggle_toggled"]
-[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HostServer" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HostServer" to="." method="_on_host_server_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HostServer" to="." method="_on_button_pressed"]
