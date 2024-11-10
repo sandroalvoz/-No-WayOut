@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://corrxb4minuu2" path="res://Models/Barca.glb" id="3_uingx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rndhn"]
-size = Vector3(2.02124, 0.303955, 3.03654)
+size = Vector3(4.48358, 3.23608, 4.75362)
 
 [sub_resource type="BoxMesh" id="BoxMesh_c8g7o"]
 
@@ -16,7 +16,7 @@ radius = 3.25996
 script = ExtResource("1_votvr")
 
 [node name="BoatCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00322962, 0.00621808, 0.905388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130867, 1.18276, 1.96618)
 shape = SubResource("BoxShape3D_rndhn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -34,7 +34,7 @@ shape = SubResource("SphereShape3D_u0p67")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.710204, 0, -0.3694, 0)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_2kvyq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43607, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43607, -1.98427)
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="InteractableArea" to="." method="_on_area_3d_body_exited"]

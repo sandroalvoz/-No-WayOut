@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://1wx74xvnq5a8"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/MultiplayerGame.gd" id="1_bkg5o"]
-[ext_resource type="PackedScene" uid="uid://d00wnim72wdaa" path="res://Scenes/Boat.tscn" id="2_fnqrg"]
+[ext_resource type="PackedScene" uid="uid://d00wnim72wdaa" path="res://Scenes/PlayerBoat.tscn" id="2_fnqrg"]
 [ext_resource type="Shader" uid="uid://jx7kdwj2rcri" path="res://Shaders/Water.tres" id="3_nur5h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ti5x2"]

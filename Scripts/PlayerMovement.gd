@@ -11,10 +11,11 @@ var timeSince = 0
 var motionActivated:bool = false
 var canMove:bool = true
 #var multiplayerMode:bool = true
-var fall_acceleration = 2
-
+var fall_acceleration = 0.5
+var health = 5
+@onready var swordHitbox = $Node3D/JugadorModelo/Armature_001/Skeleton3D/BoneAttachment3D/Sword/SwordHitbox
 @onready var animationPlayer = $Node3D/JugadorModelo/AnimationPlayer
-@onready var soundPlayer = $AudioStreamPlayer3D
+@onready var soundPlayer =$AudioStreamPlayer3D
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
@@ -53,11 +54,12 @@ func _physics_process(delta):
 			setStateWalk()
 			direction = direction.normalized()
 			self.basis = Basis.looking_at(direction)
+		else: setStateIdle()
 		#$Pivot.basis = Basis.looking_at(direction)
 		target_velocity.x = direction.x * baseSpeed *GetTension()
 		target_velocity.z = direction.z * baseSpeed *GetTension()
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
+		target_velocity.y = -(fall_acceleration * delta)
 	#if multiplayerMode:
 		#print(is_multiplayer_authority())
 		#if is_multiplayer_authority():
@@ -66,12 +68,17 @@ func _physics_process(delta):
 		#print("Tengo control del jugador")
 		#velocity = target_velocity
 	velocity = target_velocity
+	#print(velocity)
 	move_and_slide()
 	pass
 
 func PerformAttack():
 	#soundPlayer.stream = load()
 	canMove = false
+	var enemies = swordHitbox.get_overlapping_bodies()
+	for enemy in enemies:
+		print(enemy)
+		if enemy.has_method("on_hit"): enemy.on_hit()
 	setStateAttack()
 	#soundPlayer.play()
 	#demas cosas de ataque
@@ -90,9 +97,6 @@ func timer(delta):
 	if timeSince>=period:
 		timeSince=0
 		if tension >0: tension-=1
-
-func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	pass # Replace with function body.
 	
 func setStateIdle():
 	canMove = true
@@ -108,4 +112,12 @@ func setStateWalk():
 	animationPlayer.play("Walk",0.05)
 	
 func setStateDeath():
-	animationPlayer.play("Idle",0.05)
+	animationPlayer.play("Death",0.05)
+
+func on_hit():
+	health-=1
+	if health <=0:
+		setStateDeath()
+
+func destroy():
+	self.queue_free()

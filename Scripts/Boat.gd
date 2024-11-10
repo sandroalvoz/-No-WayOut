@@ -9,6 +9,7 @@ enum boatStates{arriving, onLand, leaving}
 var center
 var playersOnArea = 0
 var username: String = "Default"
+@onready var boatCollider = $BoatCollider
 @onready var interactableArea = $InteractableArea
 @onready var player = $PlayerCharacter
 
@@ -23,6 +24,7 @@ func _ready():
 	self.position = getSpawnPosition(center)
 	var direction_to_center = (center - position).normalized()
 	self.global_transform.basis = Basis.looking_at(Vector3(direction_to_center.x, position.y, direction_to_center.z))
+	boatCollider.set_process(false)
 	interactableArea.set_process(false)
 	pass # Replace with function body.
 
@@ -44,6 +46,7 @@ func move(delta):
 		if collision:
 			if collision.get_collider()!=player:
 				boatState = boatStates.onLand
+				boatCollider.set_process(true)
 				on_arrival()
 	if boatState==boatStates.leaving:
 		move_and_collide(-move_vector)
@@ -54,6 +57,7 @@ func move(delta):
 func on_arrival():
 	print (is_multiplayer_authority())
 	player.reparent(self.get_parent())
+	player.canMove = true
 	interactableArea.set_process(true)
 	player.motionActivated = true
 	pass

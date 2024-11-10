@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2m5jmhmalwyq"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/Server.gd" id="1_56m3l"]
-[ext_resource type="PackedScene" uid="uid://d00wnim72wdaa" path="res://Scenes/Boat.tscn" id="2_5q0mh"]
+[ext_resource type="PackedScene" uid="uid://d00wnim72wdaa" path="res://Scenes/PlayerBoat.tscn" id="2_5q0mh"]
 [ext_resource type="PackedScene" uid="uid://0ppsmmy7cap5" path="res://Scenes/EscenarioPrueba.tscn" id="3_d7dhh"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/ServerIsland.gd" id="4_4ft6h"]
 

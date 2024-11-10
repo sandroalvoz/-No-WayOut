@@ -16,7 +16,7 @@ extends MeshInstance3D
 var seed
 
 func _ready():
-	get_node("..").connect("player_connected", sendData)
+	#get_node("..").connect("player_connected", sendData)
 	generate_terrain()
 func sendData():
 	rpc("sync_terrain_params", seed, frequency, falloff_strength, xSize, zSize, max_height)  # Sincroniza el `seed` y otros parámetros
